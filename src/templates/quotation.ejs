@@ -1,0 +1,143 @@
+<table class="three_sections">
+  <tr>
+    <td class="left">
+      <div>Invoice date</div>
+      <div class="title"><%= context.issueDate %></div>
+    </td>
+    <td class="center">
+      <div>Issue date</div>
+      <div class="title"><%= context.invoiceDate %></div>
+    </td>
+    <td class="right">
+      <div>Invoice No:</div>
+      <div class="title"><%= context.invoiceNumber %></div>
+    </td>
+  </tr>
+</table>
+
+<table class="info-table" style="margin-top: 40px">
+  <tr class="border-none">
+    <td class="w-half">
+      <table class="info-table to_section">
+        <tr class="border-none">
+          <td colspan="2" class="title">to</td>
+        </tr>
+        <tr>
+          <td class="strong">Name:</td>
+          <td><%= context.client.name %></td>
+        </tr>
+        <tr>
+          <td class="strong">Phone:</td>
+          <td><%= context.client.phone %></td>
+        </tr>
+        <tr>
+          <td class="strong">Email:</td>
+          <td><%= context.client.email %></td>
+        </tr>
+        <tr>
+          <td class="strong">Post Code:</td>
+          <td><%= context.client.address %></td>
+        </tr>
+      </table>
+    </td>
+
+    <!-- Vehicle Details Section -->
+    <td class="w-half border-none">
+      <table class="info-table vehicle_section">
+        <tr class="border-none">
+          <td colspan="2" class="title">Vehicle Details</td>
+        </tr>
+        <tr>
+          <td class="strong">Make:</td>
+          <td><%= context.vehicle.make %></td>
+        </tr>
+        <tr>
+          <td class="strong">Model:</td>
+          <td><%= context.vehicle.model %></td>
+        </tr>
+        <tr>
+          <td class="strong">Year:</td>
+          <td><%= context.vehicle.year %></td>
+        </tr>
+        <tr>
+          <td class="strong">Reg:</td>
+          <td><%= context.vehicle.reg %></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<table class="one-section" style="margin-top: 40px">
+  <tr>
+    <td class="title left">Description</td>
+    <td class="title left">Rate</td>
+    <td class="title center">Quantity</td>
+    <td class="title center">Amount</td>
+  </tr>
+  <% if (context.items && context.items.length) { 
+    context.items.forEach(item => { %>
+      <tr>
+        <td class="left"><%= item.description %></td>
+        <td class="left"><%= item.price %></td>
+        <td class="center"><%= item.quantity %></td>
+        <td class="center"><%= item.totalPrice %></td>
+      </tr>
+    <% }); 
+  } %>
+  <!-- THIS IS TOTAL SECTION -->
+  <tr>
+    <td colspan="3" class="strong right">Sub total:</td>
+    <td class="center"><%= context.totals.subTotal %></td>
+  </tr>
+  <tr class="border-none">
+    <td colspan="3" class="strong right">Vat %:</td>
+    <td class="center"><%= context.totals.vat %>%</td>
+  </tr>
+  <tr class="border-none">
+    <td colspan="3" class="strong right">Total:</td>
+    <td class="center"><%= context.totals.total %></td>
+  </tr>
+</table>
+
+<% if (context.bankDetails.exists) { %>
+<table class="info-table" style="width: auto">
+  <tr class="border-none">
+    <td colspan="2" class="title">Bank details</td>
+  </tr>
+  <tr>
+    <td class="strong">Name:</td>
+    <td><%= context.bankDetails.name %></td>
+  </tr>
+  <tr>
+    <td class="strong">Sort code:</td>
+    <td><%= context.bankDetails.sortCode %></td>
+  </tr>
+  <tr>
+    <td class="strong">Account number:</td>
+    <td><%= context.bankDetails.accountNumber %></td>
+  </tr>
+</table>
+<% } %>
+
+<table class="info-table" style="margin-top: 20px">
+  <tr class="border-none">
+    <td class="title">Terms and conditions</td>
+  </tr>
+  <tr>
+    <td>
+      <%= context.terms %>
+    </td>
+  </tr>
+</table>
+
+<table class="one-section" style="margin-bottom: 20px">
+  <tr class="border-none">
+    <td class="title">Note:</td>
+  </tr>
+  <tr>
+    <td>
+      <%= context.note %>
+    </td>
+  </tr>
+</table>

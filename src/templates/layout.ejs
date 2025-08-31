@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><%- subject %></title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 14px;
+      color: #333;
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+
+    .container {
+      width: 70%;
+      margin: 0 auto;
+      padding: 20px 40px;
+      background-color: #fff;
+      border-top: 20px solid #269ca3;
+      border-left: 20px solid black;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+      width: 100%;
+      padding-bottom: 20px;
+    }
+
+    .email-type {
+      font-size: 40px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      width: 50%;
+      text-align: right;
+      text-transform: uppercase;
+      color: #269ca3;
+      font-weight: 700;
+    }
+
+    .logo {
+      width: 50%;
+      text-align: left;
+    }
+
+    /* Footer */
+    .footer {
+      width: 100%;
+      padding: 15px 20px;
+      font-size: 12px;
+      color: #666;
+      border-top: 1px solid #ddd;
+    }
+
+    .contact-detail {
+      width: 33.33%;
+      text-align: center;
+      vertical-align: top;
+    }
+
+    .contact-icon {
+      background-color: #269ca3;
+      color: white;
+      font-size: 14px;
+      height: 28px;
+      width: 28px;
+      line-height: 28px;
+      text-align: center;
+      display: inline-block;
+      border-radius: 50%;
+      vertical-align: middle;
+    }
+
+    .contact-text {
+      margin-left: 8px;
+      vertical-align: middle;
+      color: #333;
+      word-break: break-all;
+    }
+
+    main {
+      margin-block: 20px;
+    }
+
+    .w-full {
+      width: 100%;
+    }
+
+    .w-half {
+      width: 50%;
+    }
+
+    /* Table styling */
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .info-table tr {
+      border-top: 1px solid #ddd;
+    }
+
+    .info-table td {
+      padding: 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .to_section {
+      width: 80%;
+      margin-right: auto;
+    }
+
+    .vehicle_section {
+      width: 80%;
+      margin-left: auto;
+    }
+
+    .strong {
+      font-weight: bold;
+    }
+
+    .border-none {
+      border: none !important;
+    }
+
+    .three_sections {
+      width: 100%;
+      border-collapse: collapse;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .three_sections tr {
+      width: 33.33%;
+    }
+
+    .three_sections td {
+      padding: 10px;
+    }
+
+    .left {
+      text-align: left;
+    }
+
+    .right {
+      text-align: right;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .title {
+      color: #269ca3;
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .one-section {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .one-section tr {
+      border-top: 1px solid #ddd;
+    }
+
+    .one-section td {
+      padding: 8px;
+      vertical-align: top;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+      }
+
+      .w-half {
+        width: 100%;
+        display: block;
+      }
+
+      .to_section {
+        width: 100%;
+      }
+
+      .vehicle_section {
+        width: 100%;
+      }
+
+      .three_sections tr {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header td {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding-block: 10px;
+      }
+
+      .info-table td {
+        display: block;
+      }
+
+      .one-section td {
+        display: block;
+      }
+
+      .three_sections td {
+        display: block;
+      }
+
+      .footer td {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding-block: 10px;
+      }
+
+      .left {
+        text-align: left;
+      }
+
+      .right {
+        text-align: left;
+      }
+
+      .center {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <table class="header">
+      <tbody>
+        <tr>
+          <td class="logo">
+            <% if (context.company.logo) { %>
+              <img src="<%- context.company.logo %>" height="50" width="50" alt="business-logo" />
+            <% } else { %>
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC8fLVQlvpTkB0g1pk4_x7FksQAQZTGiMqKg&s" height="50" width="50" alt="business-logo" />
+            <% } %>
+            <h3><%- context.company.name %></h3>
+          </td>
+          <td class="email-type"><%- type %></td>
+        </tr>
+      </tbody>
+    </table>
+    <main>
+      <%- content %>
+    </main>
+
+    <table class="footer">
+      <tbody>
+        <tr>
+          <td class="contact-detail">
+            <img src="https://res.cloudinary.com/dgfwvkzbj/image/upload/v1749122363/map-pin-house_mulbj9.png" alt="Address Icon" class="contact-icon" />
+            <span class="contact-text">
+              <%- context.company.address %>
+            </span>
+          </td>
+          <td class="contact-detail">
+            <img src="https://res.cloudinary.com/dgfwvkzbj/image/upload/v1749122363/phone_prxp7u.png" alt="Phone Icon" class="contact-icon" />
+            <span class="contact-text"> <%- context.company.phone %> </span>
+          </td>
+          <td class="contact-detail">
+            <img src="https://res.cloudinary.com/dgfwvkzbj/image/upload/v1749122363/mail_nyputh.png" alt="Mail Icon" class="contact-icon" />
+            <span class="contact-text"> <%- context.company.email %> </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>
